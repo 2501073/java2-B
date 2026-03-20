@@ -1,0 +1,41 @@
+public class Customer {
+    private Apple apple;
+    private int myMoney;
+
+    public Customer(int myMoney) {
+        this.apple = null;
+        this.myMoney = myMoney;
+    }
+
+    public void buy(Seller seller, Apple apple, int count) {
+        int total = count * apple.getPrice();
+        if (myMoney >= total) {
+            if (seller.sale(count)) {
+                if (this.apple == null) {
+                    this.apple = Apple(apple.getPrice(), count);
+                } else {
+                    apple.setInventory(apple.getInventory() + count);
+                }
+                myMoney -= total;
+            } else {
+                System.out.println("error 판매자의 재고 부족");
+            }
+
+        } else {
+            System.out.println("error 예산이 부족합니다");
+        }
+        System.out.println(seller);
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        if (apple == null) {
+            result = String.format("고객: 현금 : %,d원, 사과: 0개", myMoney);
+        } else {
+            result = String.format("고객: 현금 : %,d원, 사과, %,d개", myMoney, apple.getInventory());
+        }
+        return result;
+    }
+}
