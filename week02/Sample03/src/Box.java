@@ -24,6 +24,6 @@ public class Box {
                 "\t 세로 : %d Cm\n" +
                 "\t 높이 : %d Cm\n" +
                 "\t 문구 : %s\n" +
-                "\t 부피 : %d")
+                "\t 부피 : %d");
     }
 }
